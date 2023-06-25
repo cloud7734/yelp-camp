@@ -59,12 +59,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// CRUD START
-// GET home
-app.get('/', (req, res) => {
-    res.render('home');
-});
-
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
@@ -72,10 +66,13 @@ app.use((req, res, next) => {
     next();
 })
 
+app.get('/', (req, res) => {
+    res.render('home');
+});
+
 app.use('/', userRoutes);
 app.use('/campgrounds', campgroundsRoutes);
 app.use('/campgrounds/:id/reviews', reviewsRoutes);
-// CRUD END
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));
