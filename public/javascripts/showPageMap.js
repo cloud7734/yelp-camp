@@ -1,7 +1,7 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/outdoors-v12', 
+  style: 'mapbox://styles/mapbox/light-v11', 
   center: campground.geometry.coordinates, 
   zoom: 10
 });
